@@ -2,6 +2,9 @@ import { BoardState } from './boardstate';
 import { Card } from './card';
 import { Player } from './player';
 
+//TODO, define a TURN as strictly a pair of moves, one draw action, one discard action
+//redefine ai api to use these
+
 export interface Move {
     apply(boardState: BoardState): BoardState;
 }
