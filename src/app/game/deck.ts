@@ -11,8 +11,7 @@ export class Deck {
     public cards: Array<Card>;
     
     constructor() {
-        //        this.reset().shuffle();
-        this.reset();
+        this.reset().shuffle();
     }
 
     public reset(): Deck {

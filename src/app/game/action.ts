@@ -9,22 +9,28 @@ export interface Action {
     apply(boardState: BoardState): BoardState;
 }
 
+export interface DrawCardAction extends Action {
+}
+
+export interface UseCardAction extends Action {
+}
+
 //draw from deck
-export class DrawBlindAction implements Action {
+export class DrawBlindAction implements DrawCardAction {
     public apply(boardState: BoardState): BoardState {
         return boardState;
     }
 }
 
 //draw from discard pile
-export class DrawDiscardedAction implements Action {
+export class DrawDiscardedAction implements DrawCardAction {
     public apply(boardState: BoardState): BoardState {
         return boardState;
     }
 }
 
 //discard to a discard pile
-export class DiscardCardAction implements Action {
+export class DiscardCardAction implements UseCardAction {
 
     constructor(private card: Card) {
     }
@@ -41,7 +47,7 @@ export class DiscardCardAction implements Action {
     }
 }
 
-export class PlayCardAction implements Action {
+export class PlayCardAction implements UseCardAction {
     constructor(private card: Card) {
     }
 
