@@ -35,20 +35,4 @@ export class Player {
         //todo, implement comparison operator in card object
         //if card is in hand, remove it
     }
-    
-    /*
-    //move to Move interface / object
-    public playCard(card: Card) {
-        if(!this.hasCardInHand(card)) {
-            throw new Error('player does not have this card');
-        }
-    }
-
-    public discardCard(card: Card) {
-        if(!this.hasCardInHand(card)) {
-            throw new Error('player does not have this card');
-        }
-    }
-    */
-
 }

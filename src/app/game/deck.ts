@@ -1,5 +1,6 @@
 import {
     Card,
+    Value,
     colors,
     values
 } from './card';
@@ -10,16 +11,21 @@ export class Deck {
     public cards: Array<Card>;
     
     constructor() {
-        this.cards = [];
-        this.reset().shuffle();
+        //        this.reset().shuffle();
+        this.reset();
     }
 
     public reset(): Deck {
+        this.cards = [];
         for(let colorIndex of colors) {
-            for(let valueIndex of values) {
+            //add in extra investment cards
+            for(let valueIndex of values.concat(Array(NUM_INVESTMENTS-1).fill(Value.INVESTMENT))) {
                 this.cards.push(new Card(colorIndex, valueIndex));
             }
         }
+        console.log('card thing');
+        console.log(this.cards);            
+
         return this;
     }
 

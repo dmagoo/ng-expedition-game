@@ -7,21 +7,10 @@ import { Move } from './move';
 
 
 export class Game {
-
-    private players: Array<Player>;
     private boardState: BoardState;
-    private deck: Deck;
-    
     private gameStarted: boolean = false;
-
-    private discardPiles: Array<DiscardPile>;
     
     constructor() {
-        this.players = [];
-        this.players.push(new Player('Player A'));
-        this.players.push(new Player('Player B'));
-        this.boardState = new BoardState(0, this.players);
-        this.deck = new Deck();
     }
 
     public getBoardState() {
@@ -32,10 +21,14 @@ export class Game {
         if(this.gameStarted) {
             throw new Error('game already started');
         }
-        
-        this.dealStartingHands();
+        let deck = new Deck();
+        this.boardState = new BoardState(
+            0,
+            this.initPlayers(deck),
+            deck,
+            this.initDiscardPiles()
 
-        this.initDiscardPiles();
+        );
         
         this.gameStarted = true;
 
@@ -45,18 +38,26 @@ export class Game {
         this.boardState = move.apply(this.boardState)
     }
 
-    private dealStartingHands():void {
+    private initPlayers(deck: Deck): Array<Player> {
+        let players: Array<Player> = [];
+        players.push(new Player('Player A'));
+        players.push(new Player('Player B'));
+        this.dealStartingHands(players, deck);
+        return players;
+    }
+    private dealStartingHands(players, deck: Deck):void {
         for(let i = 0; i < HAND_SIZE; i++) {
-            this.players[0].addCardToHand(this.deck.draw());
-            this.players[1].addCardToHand(this.deck.draw());
+            players[0].addCardToHand(deck.draw());
+            players[1].addCardToHand(deck.draw());
         }
     }
 
     private initDiscardPiles() {
-        this.discardPiles = [];
+        let discardPiles: Array<DiscardPile> = [];
         for(let color of colors) {
-            this.discardPiles[color] = new DiscardPile(color);
+            discardPiles[color] = new DiscardPile(color);
         }
+        return discardPiles;
     }
 
 }

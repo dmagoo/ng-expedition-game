@@ -1,4 +1,6 @@
 import { BoardState } from './boardstate';
+import { Card } from './card';
+import { Player } from './player';
 
 export interface Move {
     apply(boardState: BoardState): BoardState;
@@ -19,14 +21,32 @@ export class DrawDiscardedMove implements Move {
 }
 
 //discard to a discard pile
-export class DiscardMove implements Move {
+export class DiscardCardMove implements Move {
+
+    constructor(private card: Card) {
+    }
+
     public apply(boardState: BoardState): BoardState {
+        let player: Player = boardState.getCurrentPlayer();
+        if(!player.hasCardInHand(this.card)) {
+            throw new Error('player does not have this card');
+        }
+
+        
+
         return boardState;
     }
 }
 
 export class PlayCardMove implements Move {
+    constructor(private card: Card) {
+    }
+
     public apply(boardState: BoardState): BoardState {
+        let player: Player = boardState.getCurrentPlayer();
+        if(!player.hasCardInHand(this.card)) {
+            throw new Error('player does not have this card');
+        }
         return boardState;
     }
 }
