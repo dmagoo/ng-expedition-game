@@ -1,10 +1,10 @@
 import { PlayerAgent } from './playeragent';
 import { BoardState } from '../boardstate';
-import { Move } from '../move';
+import { Turn } from '../turn';
 
 export class HumanPlayerAgent extends PlayerAgent {
 
-    findMove(boardState: BoardState): Move {
+    findTurn(boardState: BoardState): Turn {
         return null;
     }
 

@@ -1,6 +1,6 @@
 import { BoardState } from '../boardstate';
-import { Move } from '../move';
+import { Turn } from '../turn';
 
 export abstract class PlayerAgent {
-    abstract findMove(boardState: BoardState): Move;
+    abstract findTurn(boardState: BoardState): Turn;
 }

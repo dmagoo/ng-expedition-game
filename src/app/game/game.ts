@@ -3,7 +3,7 @@ import { BoardState } from './boardstate';
 import { Deck } from './deck';
 import { DiscardPile } from './discardpile';
 import { colors } from './card';
-import { Move } from './move';
+import { Turn } from './turn';
 
 
 export class Game {
@@ -34,8 +34,8 @@ export class Game {
 
     }
 
-    public applyMove(move: Move) {
-        this.boardState = move.apply(this.boardState)
+    public applyTurn(turn: Turn) {
+        this.boardState = turn.apply(this.boardState)
     }
 
     private initPlayers(deck: Deck): Array<Player> {

@@ -2,29 +2,29 @@ import { BoardState } from './boardstate';
 import { Card } from './card';
 import { Player } from './player';
 
-//TODO, define a TURN as strictly a pair of moves, one draw action, one discard action
+//TODO, define a TURN as strictly a pair of actions, one draw action, one discard action
 //redefine ai api to use these
 
-export interface Move {
+export interface Action {
     apply(boardState: BoardState): BoardState;
 }
 
 //draw from deck
-export class DrawBlindMove implements Move {
+export class DrawBlindAction implements Action {
     public apply(boardState: BoardState): BoardState {
         return boardState;
     }
 }
 
 //draw from discard pile
-export class DrawDiscardedMove implements Move {
+export class DrawDiscardedAction implements Action {
     public apply(boardState: BoardState): BoardState {
         return boardState;
     }
 }
 
 //discard to a discard pile
-export class DiscardCardMove implements Move {
+export class DiscardCardAction implements Action {
 
     constructor(private card: Card) {
     }
@@ -41,7 +41,7 @@ export class DiscardCardMove implements Move {
     }
 }
 
-export class PlayCardMove implements Move {
+export class PlayCardAction implements Action {
     constructor(private card: Card) {
     }
 

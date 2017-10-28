@@ -1,6 +1,6 @@
 import { PlayerAgent } from './playeragent';
 import { BoardState } from '../boardstate';
-import { Move } from '../move';
+import { Turn } from '../turn';
 
 import {
     Strategy,
@@ -13,7 +13,7 @@ export class AIPlayerAgent extends PlayerAgent {
         super();
     }
 
-    findMove(boardState: BoardState): Move {
+    findTurn(boardState: BoardState): Turn {
         return null;
     }
 
