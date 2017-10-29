@@ -5,7 +5,7 @@ import {
 
 export class  DiscardPile {
     private cards: Array<Card>;
-
+    public length: number;
     constructor(public color: Color) {
         this.cards = [];
     }
@@ -15,6 +15,7 @@ export class  DiscardPile {
             throw new Error('cannot discard card of incorrect color');
         }
         this.cards.push(card);
+        this.length++;
     }
 
     //remove top card
@@ -22,9 +23,11 @@ export class  DiscardPile {
         if(this.cards.length <= 0) {
             throw Error('cannot draw from an empty pile');
         }
+        this.length--;
         return this.cards.pop();
-    }
 
+    }
+    
     //look at top card without removing it
     public peekTopCard(): Card {
         if(this.cards.length <= 0) {

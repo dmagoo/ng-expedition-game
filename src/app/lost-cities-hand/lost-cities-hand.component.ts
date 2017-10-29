@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input
+} from '@angular/core';
+
+import { Player } from '../game/player';
 
 @Component({
-  selector: 'app-lost-cities-hand',
-  templateUrl: './lost-cities-hand.component.html',
-  styleUrls: ['./lost-cities-hand.component.css']
+    selector: 'lost-cities-hand',
+    templateUrl: './lost-cities-hand.component.html',
+    styleUrls: ['./lost-cities-hand.component.css']
 })
 export class LostCitiesHandComponent implements OnInit {
 
-  constructor() { }
+    @Input() player: Player;
+    
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

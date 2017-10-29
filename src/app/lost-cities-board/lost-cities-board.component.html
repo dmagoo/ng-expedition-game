@@ -1,6 +1,6 @@
 <div>The Board!</div>
 <div>Current Player: {{boardState.getCurrentPlayer().name}}</div>
 <div class="lc-board">
-  Cards<br />
-  <div *ngFor="let card of boardState.getCurrentPlayer().hand ">-{{card}}</div>
+  <lost-cities-discard-piles [discardPiles]="boardState.discardPiles"></lost-cities-discard-piles>
+  <lost-cities-hand [player]="boardState.getCurrentPlayer()"></lost-cities-hand>
 </div>
