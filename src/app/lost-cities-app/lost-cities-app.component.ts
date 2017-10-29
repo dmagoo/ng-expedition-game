@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
-import { LostCitiesGameService } from './services/lost-cities-game.service'; 
-import { BoardState } from './game/boardstate';
+import { LostCitiesGameService } from '../services/lost-cities-game.service'; 
+import { BoardState } from '../game/boardstate';
 
 @Component({
   selector: 'lost-cities-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './lost-cities-app.component.html',
+  styleUrls: ['./lost-cities-app.component.css']
 })
-export class AppComponent {
+export class LostCitiesAppComponent {
   title = 'Game Thing';
 
     constructor(
