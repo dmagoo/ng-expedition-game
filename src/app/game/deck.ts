@@ -8,7 +8,7 @@ import {
 const NUM_INVESTMENTS: number = 3;
 
 export class Deck {
-    public cards: Array<Card>;
+    private cards: Array<Card>;
     
     constructor() {
         this.reset().shuffle();

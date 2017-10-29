@@ -6,6 +6,8 @@ export class Turn {
     }
 
     public apply(boardState: BoardState): BoardState {
-        return null;
+        boardState = this.useCardAction.apply(boardState);
+        boardState = this.drawCardAction.apply(boardState);
+        return boardState;
     }
 }

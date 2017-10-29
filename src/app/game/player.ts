@@ -4,13 +4,11 @@ export const HAND_SIZE: number = 8;
 
 export class Player {
 
-    public name;
-
     public hand: Array<Card>;
 
     public playedCards: Array<Array<Card>>;
     
-    constructor(name: string) {
+    constructor(public name: string) {
         this.hand = [];
     }
 
@@ -24,7 +22,6 @@ export class Player {
             throw new Error('hand limit reached');
         }
         this.hand.push(card);
-        console.log('Added card to ' + this.name + ': ' + card)
     }
 
     //move to Move interface / object
