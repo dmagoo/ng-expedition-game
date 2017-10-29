@@ -75,4 +75,8 @@ export class Card {
     public toString(): string {
         return valueNames[this.value] + ':' + colorNames[this.color];
     }
+
+    public equals(card: Card) {
+        return (this.color === card.color) && (this.value === card.value);
+    }
 }

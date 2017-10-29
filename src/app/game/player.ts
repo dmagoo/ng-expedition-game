@@ -13,8 +13,7 @@ export class Player {
     }
 
     public hasCardInHand(card: Card): boolean {
-        //todo, implement comparison operator in card object
-        return true;
+        return -1 !== this.hand.findIndex(c => c.equals(card));
     }
     
     public addCardToHand(card: Card): void {
@@ -29,7 +28,10 @@ export class Player {
         if(!this.hasCardInHand(card)) {
             throw new Error('player does not have this card');
         }
-        //todo, implement comparison operator in card object
-        //if card is in hand, remove it
+        this.hand.splice(
+            this.hand.findIndex(c => c.equals(card)),
+            1
+        );
+
     }
 }
