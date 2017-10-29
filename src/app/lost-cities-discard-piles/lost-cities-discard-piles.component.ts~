@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-lost-cities-discard-piles',
+  templateUrl: './lost-cities-discard-piles.component.html',
+  styleUrls: ['./lost-cities-discard-piles.component.css']
+})
+export class LostCitiesDiscardPilesComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
