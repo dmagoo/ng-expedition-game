@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Game } from './game/game';
+import { Game } from '../game/game';
+
 @Injectable()
 export class LostCitiesGameService {
 
