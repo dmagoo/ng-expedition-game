@@ -13,7 +13,7 @@ export class LostCitiesGameService {
     private game: Game;
 
     private playerInfo = [];
-    
+
     constructor() {
         //this.game = new Game();
     }
@@ -46,6 +46,11 @@ export class LostCitiesGameService {
     }
 
     public drawFromDiscardPile(discardPile: DiscardPile) {
+        //        throw new Error('crumbs');
+        //        console.log(discardPile);
+    }
+
+    public drawFromDeck() {
         //        throw new Error('crumbs');
         //        console.log(discardPile);
     }

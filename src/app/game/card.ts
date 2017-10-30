@@ -24,7 +24,7 @@ export var colorNames: Array<string> = [
 
 export const enum Value {
     INVESTMENT = 0,
-    ONE,
+    INVALID, //ONE does not exist, this is a placeholder so array indexes align
     TWO,
     THREE,
     FOUR,
@@ -38,7 +38,6 @@ export const enum Value {
 
 export var values: Array<Value> = [
     Value.INVESTMENT,
-    Value.ONE,
     Value.TWO,
     Value.THREE,
     Value.FOUR,
@@ -52,7 +51,7 @@ export var values: Array<Value> = [
 
 export var valueNames: Array<string> = [
     "investment",
-    "one",
+    "invalid",//one does not exist
     "two",
     "three",
     "four",
@@ -73,7 +72,8 @@ export class Card {
     }
 
     public toString(): string {
-        return valueNames[this.value] + ':' + colorNames[this.color];
+
+        return this.value + ':' + valueNames[this.value] + ':' + colorNames[this.color];
     }
 
     public equals(card: Card) {

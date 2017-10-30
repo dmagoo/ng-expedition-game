@@ -9,7 +9,8 @@ const NUM_INVESTMENTS: number = 3;
 
 export class Deck {
     private cards: Array<Card>;
-    
+    public length: number;
+
     constructor() {
         this.reset().shuffle();
     }
@@ -24,7 +25,7 @@ export class Deck {
         }
         console.log('card thing');
         console.log(this.cards);            
-
+        this.length = this.cards.length;
         return this;
     }
 
@@ -41,6 +42,11 @@ export class Deck {
     }
 
     public draw(): Card {
-        return this.cards.pop();
+        let ret = this.cards.pop();
+        if(!ret) {
+            throw Error('cannot draw from an empty pile');
+        }
+        this.length = this.cards.length;
+        return ret;
     }
 }

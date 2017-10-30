@@ -2,5 +2,9 @@
 <div>Current Player: {{boardState.getCurrentPlayer().name}}</div>
 <div class="lc-board">
   <lost-cities-discard-piles [discardPiles]="boardState.discardPiles"></lost-cities-discard-piles>
+  <div style="border: 1px solid black; width: 150px; height: 300px; display: inline-block; margin: 10px;" (click)="handleDeckClick($event);">
+    [draw deck]<br/>
+    {{boardState.deck.length}} cards remaining
+  </div>
   <lost-cities-hand [player]="boardState.getCurrentPlayer()"></lost-cities-hand>
 </div>
