@@ -1,5 +1,5 @@
 <div class="lost-cities-discard-piles" style="border: 1px solid blue; width: 860px; height: 340px; padding-top: 10px;">
-  <div *ngFor="let discardPile of discardPiles" style="border: 1px solid red; width: 150px; height: 300px; display: inline-block; margin: 10px;">
+  <div *ngFor="let discardPile of discardPiles" style="border: 1px solid red; width: 150px; height: 300px; display: inline-block; margin: 10px;" (click)="handleClick($event, discardPile);">
     <div *ngIf="discardPile.length>0; else elseBlock">{{discardPile.peekTopCard()}}</div>
     <ng-template #elseBlock>[empty]</ng-template>
   </div>
