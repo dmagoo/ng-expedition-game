@@ -10,40 +10,42 @@ export class Game {
     private boardState: BoardState;
     private gameStarted: boolean = false;
     
-    constructor() {
+    constructor(players: Array<Player>) {
+        let deck = new Deck();
+        this.initPlayers(deck, players);
+        this.boardState = new BoardState(
+            0,
+            players,
+            deck,
+            this.initDiscardPiles()
+        );
     }
 
     public getBoardState() {
         return this.boardState;
     }
 
+
+/*
     public start() {
         if(this.gameStarted) {
             throw new Error('game already started');
         }
-        let deck = new Deck();
-        this.boardState = new BoardState(
-            0,
-            this.initPlayers(deck),
-            deck,
-            this.initDiscardPiles()
-
-        );
         
         this.gameStarted = true;
 
     }
-
+*/
     public applyTurn(turn: Turn) {
         this.boardState = turn.apply(this.boardState)
     }
 
-    private initPlayers(deck: Deck): Array<Player> {
-        let players: Array<Player> = [];
-        players.push(new Player('Player A'));
-        players.push(new Player('Player B'));
+    private initPlayers(deck: Deck, players: Array<Player>): void {
+        //let players: Array<Player> = [];
+        //players.push(new Player('Player A'));
+        //players.push(new Player('Player B'));
         this.dealStartingHands(players, deck);
-        return players;
+        //return players;
     }
     private dealStartingHands(players, deck: Deck):void {
         for(let i = 0; i < HAND_SIZE; i++) {
