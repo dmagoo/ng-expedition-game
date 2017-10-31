@@ -5,9 +5,10 @@ export class Turn {
     constructor(private useCardAction: UseCardAction, private drawCardAction: DrawCardAction) {
     }
 
-    public apply(boardState: BoardState): BoardState {
-        boardState = this.useCardAction.apply(boardState);
-        boardState = this.drawCardAction.apply(boardState);
-        return boardState;
+    //applyTo a turn directly to the board state, no copying
+    //mutates original object
+    public applyTo(boardState: BoardState): void {
+        this.useCardAction.applyTo(boardState);
+        this.drawCardAction.applyTo(boardState);
     }
 }

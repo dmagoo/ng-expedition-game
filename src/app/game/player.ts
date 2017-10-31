@@ -8,7 +8,7 @@ export class Player {
 
     public playedCards: Array<Array<Card>>;
     
-    constructor(public name: string) {
+    constructor(public order: number, public name: string) {
         this.hand = [];
     }
 

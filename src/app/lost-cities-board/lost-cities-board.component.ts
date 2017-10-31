@@ -22,4 +22,8 @@ export class LostCitiesBoardComponent {
         console.log('handling click, attempting to draw from deck');
         this.gameService.drawFromDeck();
     }
+
+    getVisiblePlayer() {
+        return this.gameService.getVisiblePlayer();
+    }
 }
