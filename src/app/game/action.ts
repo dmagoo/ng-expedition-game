@@ -2,7 +2,10 @@ import {
     BoardState,
     TurnPhase
 } from './boardstate';
-import { Card } from './card';
+import {
+    Card,
+    Color
+} from './card';
 import { Player } from './player';
 
 //decorator to check that the board state is in the correct phase,
@@ -15,8 +18,22 @@ function Phase(turnPhase: TurnPhase) {
             if(turnPhase !== boardState.turnPhase) {
                 throw new Error("invalid turn phase");            
             }
-            console.log(boardState);            
+            //console.log(boardState);            
             // run and store result
+            let player: Player = boardState.getCurrentPlayer();
+            if(turnPhase === TurnPhase.DRAW_CARD) {
+                if(!player.needsCards()) {
+                    throw new Error('player has a full hand');
+                }
+            }
+
+            if(turnPhase === TurnPhase.PLAY_CARD) {
+                if(!player.hasCardInHand(this.card)) {
+                    throw new Error('player does not have this card');
+                }
+            }
+
+
             const result = originalMethod.apply(this, [boardState]);
 
             boardState.nextPhase();
@@ -50,9 +67,16 @@ export class DrawBlindAction implements DrawCardAction {
 
 //draw from discard pile
 export class DrawDiscardedAction implements DrawCardAction {
+    constructor(private color: Color) {
+    }
+
     @Phase(TurnPhase.DRAW_CARD)
     public applyTo(boardState: BoardState): void {
         console.log('drawing from discard pile');
+        boardState.getCurrentPlayer()
+            .addCardToHand(
+                boardState.discardPiles[this.color].draw()
+            );
     }
 }
 
@@ -62,11 +86,10 @@ export class DiscardCardAction implements UseCardAction {
     constructor(private card: Card) {
     }
 
+    @Phase(TurnPhase.PLAY_CARD)
     public applyTo(boardState: BoardState): void {
-        let player: Player = boardState.getCurrentPlayer();
-        if(!player.hasCardInHand(this.card)) {
-            throw new Error('player does not have this card');
-        }
+        boardState.getCurrentPlayer().removeCardFromHand(this.card);
+        boardState.discardPiles[this.card.color].discard(this.card);
     }
 }
 
@@ -74,11 +97,9 @@ export class PlayCardAction implements UseCardAction {
     constructor(private card: Card) {
     }
 
+    @Phase(TurnPhase.PLAY_CARD)
     public applyTo(boardState: BoardState): void {
-        let player: Player = boardState.getCurrentPlayer();
-        if(!player.hasCardInHand(this.card)) {
-            throw new Error('player does not have this card');
-        }
+        boardState.getCurrentPlayer().removeCardFromHand(this.card);
         boardState.nextPhase();
     }
 }

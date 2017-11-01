@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { Game } from '../game/game';
+import { Card } from '../game/card';
 import { Player } from '../game/player';
 import { DiscardPile } from '../game/discardpile';
 import { PlayerAgent } from '../game/playeragent/playeragent';
 import { HumanPlayerAgent } from '../game/playeragent/humanplayeragent';
-import { DrawBlindAction } from '../game/action';
+import * as action from '../game/action';
 var NUM_PLAYERS = 2;
 
 @Injectable()
@@ -38,7 +39,6 @@ export class LostCitiesGameService {
     }
 
     public startGame(): void {
-        //        this.game.start();
         if(2 !== this.playerInfo.length) {
             throw new Error('No players registered');
         }
@@ -49,17 +49,56 @@ export class LostCitiesGameService {
         this.game = new Game(players);
         this.updateVisiblePlayer();
     }
-   
+
+    public playCard(card: Card) {
+        //todo make this a decorator
+        if(this.getVisiblePlayer() === this.game.getCurrentPlayer()) {
+            console.log('i can do this');
+            this.game.applyAction(new action.PlayCardAction(card));
+        }
+        else {
+            throw new Error('Wait your turn.');
+        }
+        //todo, make this decorator
+        this.updateVisiblePlayer();
+    }
+
+    public discardCard(card: Card) {
+        //todo make this a decorator
+        if(this.getVisiblePlayer() === this.game.getCurrentPlayer()) {
+            console.log('i can do this');
+            this.game.applyAction(new action.DiscardCardAction(card));
+        }
+        else {
+            throw new Error('Wait your turn.');
+        }
+        //todo, make this decorator
+        this.updateVisiblePlayer();
+    }
+
     public drawFromDiscardPile(discardPile: DiscardPile) {
-        //        console.log(discardPile);
+        //todo make this a decorator
+        if(this.getVisiblePlayer() === this.game.getCurrentPlayer()) {
+            console.log('i can do this');
+            this.game.applyAction(new action.DrawDiscardedAction(discardPile.color));
+        }
+        else {
+            throw new Error('Wait your turn.');
+        }
+        //todo, make this decorator
+        this.updateVisiblePlayer();
     }
 
     public drawFromDeck() {
         if(this.getVisiblePlayer() === this.game.getCurrentPlayer()) {
             console.log('i can do this');
-            this.game.applyAction(new DrawBlindAction());
+            this.game.applyAction(new action.DrawBlindAction());
         }
-        //        console.log(discardPile);
+        else {
+            throw new Error('Wait your turn.');
+        }
+        //todo, make this decorator
+        this.updateVisiblePlayer();
     }
 
     public getVisiblePlayer(): Player {

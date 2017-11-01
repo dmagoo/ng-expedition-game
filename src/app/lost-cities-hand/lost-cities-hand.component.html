@@ -1,4 +1,6 @@
 <div class="lost-cities-hand">
   Cards<br />
-  <div *ngFor="let card of player.hand ">-{{card}}</div>
+  <div *ngFor="let card of player.hand" (click)="handleClick($event, card);" class="hand-card">
+    {{card}}
+  </div>
 </div>

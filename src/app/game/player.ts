@@ -23,6 +23,10 @@ export class Player {
         this.hand.push(card);
     }
 
+    public needsCards(): boolean {
+        return this.hand.length < HAND_SIZE;
+    }
+    
     //move to Move interface / object
     public removeCardFromHand(card: Card) {
         if(!this.hasCardInHand(card)) {

@@ -5,6 +5,8 @@ import {
 } from '@angular/core';
 
 import { Player } from '../game/player';
+import { Card } from '../game/card';
+import { LostCitiesGameService } from '../services/lost-cities-game.service';
 
 @Component({
     selector: 'lost-cities-hand',
@@ -15,9 +17,17 @@ export class LostCitiesHandComponent implements OnInit {
 
     @Input() player: Player;
     
-    constructor() { }
+    constructor(private gameService: LostCitiesGameService) { }
 
     ngOnInit() {
+    }
+
+    handleClick(event: MouseEvent, card: Card) {
+        console.log('handling click, attempting to play a hand card: ' + card.color);
+        //this.gameService.drawFromDiscardPile(discardPile);
+        //        this.gameService.playCard(card);
+        this.gameService.discardCard(card);
+
     }
 
 }

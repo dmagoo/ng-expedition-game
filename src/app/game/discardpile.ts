@@ -5,7 +5,7 @@ import {
 
 export class  DiscardPile {
     private cards: Array<Card>;
-    public length: number;
+    public length: number = 0;
     constructor(public color: Color) {
         this.cards = [];
     }

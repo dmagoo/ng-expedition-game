@@ -1,0 +1,8 @@
+.hand-card {
+    position: relative;
+    border: 1px solid black;
+    width: 150px;
+    height: 300px;
+    display: inline-block;
+    margin: 10px;
+}
