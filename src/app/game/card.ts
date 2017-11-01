@@ -14,13 +14,17 @@ export var colors: Array<Color> = [
     Color.RED
 ];
 
-export var colorNames: Array<string> = [
+let colorNames: Array<string> = [
     "yellow",
     "blue",
     "white",
     "green",
     "red"
 ];
+
+export function getColorName(color: Color) {
+    return colorNames[color];
+}
 
 export const enum Value {
     INVESTMENT = 0,

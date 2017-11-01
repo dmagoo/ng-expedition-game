@@ -7,7 +7,7 @@
 
 .discard-pile {
     position: relative;
-    border: 1px solid red;
+    border: 1px solid #333;
     width: 150px;
     height: 300px;
     display: inline-block;
@@ -24,3 +24,22 @@
     transform: translate(-50%, -50%);
 }
 
+.discard-pile-yellow {
+    background-color: #ffff33;
+}
+
+.discard-pile-blue {
+    background-color: #3399ff;
+}
+
+.discard-pile-white {
+    background-color: #cccccc;
+}
+
+.discard-pile-green {
+    background-color: #33ff33;
+}
+
+.discard-pile-red {
+    background-color: #ff3333;
+}
