@@ -1,0 +1,43 @@
+@import '../lost-cities-card/lost-cities-card.common';
+
+$pile-margin: 5px;
+
+.played-cards-piles {
+    border: 1px solid green;
+    width: ($card-width*5) + ($pile-margin*10) + 10; //+10 because of left/right card borders
+    height: $card-height + ($pile-margin*2) + 2 //+2 of top/botom card borders;
+}
+
+.played-cards-pile {
+    position: relative;
+    border: 1px solid #333;
+    width: $card-width;
+    height: $card-height;
+    display: inline-block;
+    margin: $pile-margin;
+    cursor: default;
+}
+
+.played-card {
+    display: block;
+    position: relative;
+    margin-top: -124px;
+}
+
+.played-card:first-child {
+    margin-top: 0;
+}
+
+.empty-pile {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    cursor: default;
+}
+
+.played-cards-piles-flipped {
+    transform: rotate(180deg);
+}

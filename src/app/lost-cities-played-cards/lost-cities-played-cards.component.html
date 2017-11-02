@@ -1,0 +1,17 @@
+<div class="played-cards-piles played-cards-piles-{{orientation}}">
+  <div *ngFor="let playedCardsPile of (
+               'flipped' === orientation ?
+               playedCardsPiles.reverse() : 
+               playedCardsPiles
+        )" class="played-cards-pile">
+
+    <ng-container *ngIf="playedCardsPile.length > 0">
+      <lost-cities-card *ngFor="let card of playedCardsPile.cards" [card]="card" class="played-card"></lost-cities-card>
+    </ng-container>
+    <ng-container *ngIf="playedCardsPile.length <= 0">
+      <div class="empty-pile">
+        [empty]
+      </div>
+    </ng-container>
+  </div>
+</div>
