@@ -1,0 +1,6 @@
+@import '../lost-cities-card/lost-cities-card.common.scss';  
+.card {
+    border: 1px solid black;
+    width: $card-width;
+    height: $card-height;
+}

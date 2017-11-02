@@ -1,0 +1,5 @@
+<div class="card card-{{ card.color | cardcolor }}">
+{{card}}
+</div>
+
+

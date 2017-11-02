@@ -1,0 +1,54 @@
+@import '../lost-cities-card/lost-cities-card.common.scss';  
+.card {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: $card-width;
+    height: $card-height;
+    position: relative;
+    display: table;
+}
+
+.corner-number {
+    position: absolute;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.corner-number-right {
+    right: 0px;
+}
+
+.corner-number-left {
+    left: 0px;
+}
+
+.corner-number-bottom {
+    bottom: 0px;
+}
+
+.corner-number-top {
+    top: 0px;
+}
+
+.big-number {
+    display: table-cell;
+    position: relative;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    3px 3px 0 #000;
+    font-size: 90px;
+    color: white;
+}
