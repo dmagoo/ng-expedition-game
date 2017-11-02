@@ -1,22 +1,28 @@
 $card-width: 90px;
 $card-height: $card-width * 1.61803;
 
+$color-yellow: #ffff33;
+$color-blue: #3399ff;
+$color-white: #cccccc;
+$color-green:#33ff33;
+$color-red: #ff3333;
+
 .card-yellow {
-    background-color: #ffff33;
+    background-color: $color-yellow;
 }
 
 .card-blue {
-    background-color: #3399ff;
+    background-color: $color-blue;
 }
 
 .card-white {
-    background-color: #cccccc;
+    background-color: $color-white;
 }
 
 .card-green {
-    background-color: #33ff33;
+    background-color: $color-green;
 }
 
 .card-red {
-    background-color: #ff3333;
+    background-color: $color-red;
 }

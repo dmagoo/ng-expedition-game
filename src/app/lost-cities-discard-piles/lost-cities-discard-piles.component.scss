@@ -8,15 +8,6 @@ $pile-margin: 5px;
     height: $card-height + ($pile-margin*2) + 2 //+2 of top/botom card borders;
 }
 
-.discard-pile {
-    position: relative;
-    border: 1px solid #333;
-    width: $card-width;
-    height: $card-height;
-    display: inline-block;
-    margin: $pile-margin;
-}
-
 .empty-pile,
 .top-card {
     margin: 0;
@@ -25,4 +16,39 @@ $pile-margin: 5px;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    cursor: default;
+}
+
+.discard-pile {
+    position: relative;
+    border: 1px solid #333;
+    width: $card-width;
+    height: $card-height;
+    display: inline-block;
+    margin: $pile-margin;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.2)
+                    );
+    cursor: pointer;
+}
+
+.empty-pile {
+    color: white;
+}
+
+.discard-pile-yellow {
+    background-color: $color-yellow;
+}
+.discard-pile-blue {
+    background-color: $color-blue;
+}
+.discard-pile-white {
+    background-color: $color-white;
+}
+.discard-pile-green {
+    background-color: $color-green;
+}
+.discard-pile-red {
+    background-color: $color-red;
 }

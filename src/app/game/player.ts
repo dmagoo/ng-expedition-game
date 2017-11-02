@@ -52,6 +52,14 @@ export class Player {
             this.hand.findIndex(c => c.equals(card)),
             1
         );
-
     }
+
+    public getScore(): number {
+        let score = 0;
+        for(let i = 0; i < this.playedCards.length; i++) {
+            score += this.playedCards[i].score;            
+        }
+        return score;
+    }
+
 }
