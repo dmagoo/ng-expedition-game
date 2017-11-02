@@ -10,6 +10,7 @@ import { LostCitiesHandComponent } from './lost-cities-hand/lost-cities-hand.com
 import { LostCitiesDiscardPilesComponent } from './lost-cities-discard-piles/lost-cities-discard-piles.component';
 
 import { CardColorPipe } from './pipes/cardcolor.pipe';
+import { LostCitiesPlayedCardsComponent } from './lost-cities-played-cards/lost-cities-played-cards.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CardColorPipe } from './pipes/cardcolor.pipe';
         LostCitiesHandComponent,
         LostCitiesDiscardPilesComponent,
         CardColorPipe,
-        LostCitiesCardComponent
+        LostCitiesCardComponent,
+        LostCitiesPlayedCardsComponent
     ],
     imports: [
         BrowserModule

@@ -1,9 +1,5 @@
 <div class="lost-cities-hand">
   Cards<br />
-  <!-- div *ngFor="let card of player.hand" (click)="handleClick($event, card);" -->
-    <!-- lost-cities-card [card]="card" class="hand-card"></lost-cities-card -->
-    <!-- /div -->
-
     <lost-cities-card
        class="hand-card"
        *ngFor="let card of player.hand"
@@ -11,6 +7,4 @@
        [card]="card"
        >
       </lost-cities-card>
-    <!-- lost-cities-card [card]="card" class="hand-card"></lost-cities-card -->
-<!-- /div -->
 </div>

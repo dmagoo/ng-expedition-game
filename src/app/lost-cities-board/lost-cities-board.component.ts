@@ -3,6 +3,7 @@ import {
     Input
 } from '@angular/core';
 
+import { Player } from '../game/player';
 import { BoardState } from '../game/boardstate';
 import { LostCitiesGameService } from '../services/lost-cities-game.service';
 
@@ -23,7 +24,11 @@ export class LostCitiesBoardComponent {
         this.gameService.drawFromDeck();
     }
 
-    getVisiblePlayer() {
+    getVisiblePlayer(): Player {
         return this.gameService.getVisiblePlayer();
+    }
+
+    getVisibleOpponent(): Player {
+        return this.gameService.getVisibleOpponent();
     }
 }

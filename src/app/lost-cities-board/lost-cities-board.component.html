@@ -1,10 +1,16 @@
 <div>The Board!</div>
 <div>Current Player: {{boardState.getCurrentPlayer().name}}</div>
 <div class="lc-board">
+
+  <lost-cities-played-cards [playedCardsPiles]="getVisibleOpponent().playedCards" [orientation]="'flipped'" class="played-cards-piles"></lost-cities-played-cards>
+
   <lost-cities-discard-piles [discardPiles]="boardState.discardPiles" class="discard-piles"></lost-cities-discard-piles>
   <div class="draw-deck" (click)="handleDeckClick($event);">
     [draw deck]<br/>
     {{boardState.deck.length}} cards remaining
   </div>
+
+  <lost-cities-played-cards [playedCardsPiles]="getVisiblePlayer().playedCards" [orientation]="'normal'" class="played-cards-piles"></lost-cities-played-cards>
+
   <lost-cities-hand [player]="getVisiblePlayer()"></lost-cities-hand>
 </div>

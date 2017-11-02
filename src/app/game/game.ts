@@ -69,4 +69,5 @@ export class Game {
         }
         return discardPiles;
     }
+
 }

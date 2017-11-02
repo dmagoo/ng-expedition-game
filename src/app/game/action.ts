@@ -99,7 +99,6 @@ export class PlayCardAction implements UseCardAction {
 
     @Phase(TurnPhase.PLAY_CARD)
     public applyTo(boardState: BoardState): void {
-        boardState.getCurrentPlayer().removeCardFromHand(this.card);
-        boardState.nextPhase();
+        boardState.getCurrentPlayer().playCard(this.card);
     }
 }

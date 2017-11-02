@@ -1,15 +1,23 @@
-import { Card } from './card';
-
+import {
+    Card,
+    colors
+} from './card';
+import { PlayedCardsPile } from './playedcardspile';
 export const HAND_SIZE: number = 8;
 
 export class Player {
 
     public hand: Array<Card>;
-
-    public playedCards: Array<Array<Card>>;
+    public playedCards: Array<PlayedCardsPile>;
     
     constructor(public order: number, public name: string) {
         this.hand = [];
+        this.playedCards = [];
+        
+        for(let color of colors) {
+            this.playedCards[color] = new PlayedCardsPile(color);
+        }
+
     }
 
     public hasCardInHand(card: Card): boolean {
@@ -23,6 +31,14 @@ export class Player {
         this.hand.push(card);
     }
 
+    public playCard(card: Card) {
+        if(!this.hasCardInHand(card)) {
+            throw new Error('player does not have this card');
+        }
+        this.playedCards[card.color].addCard(card);
+        this.removeCardFromHand(card);
+    }
+    
     public needsCards(): boolean {
         return this.hand.length < HAND_SIZE;
     }

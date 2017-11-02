@@ -104,6 +104,12 @@ export class LostCitiesGameService {
     public getVisiblePlayer(): Player {
         return this.visiblePlayer;
     }
+    public getVisibleOpponent(): Player {
+        return this.getOppositePlayer(this.getVisiblePlayer());
+    }
+    private getOppositePlayer(player: Player) {
+        return this.game.getBoardState().playerList[1 - player.order];
+    }
     
     private updateVisiblePlayer(): void {
         let currentPlayer = this.game.getCurrentPlayer();
