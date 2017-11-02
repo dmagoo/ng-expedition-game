@@ -9,7 +9,7 @@ import { LostCitiesGameService } from '../services/lost-cities-game.service';
 @Component({
     selector: 'lost-cities-board',
     templateUrl: './lost-cities-board.component.html',
-    styles: ['lost-cities-board.component.css']
+    styleUrls: ['./lost-cities-board.component.scss']
 
 })
 export class LostCitiesBoardComponent {

@@ -1,0 +1,15 @@
+@import '../lost-cities-card/lost-cities-card.common';
+
+.draw-deck {
+    border: 1px solid black;
+    width: $card-width;
+    height: $card-height;
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+}
+
+.discard-piles {
+    display: inline-block;
+    vertical-align: top;
+}

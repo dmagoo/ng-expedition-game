@@ -1,0 +1,10 @@
+@import '../lost-cities-card/lost-cities-card.common.scss';
+.hand-card {
+    position: relative;
+    display: inline-block;
+    margin: -18px;
+}
+
+.hand-card:hover {
+    z-index: 1;                 
+}

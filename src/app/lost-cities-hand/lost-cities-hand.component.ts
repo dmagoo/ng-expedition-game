@@ -11,7 +11,7 @@ import { LostCitiesGameService } from '../services/lost-cities-game.service';
 @Component({
     selector: 'lost-cities-hand',
     templateUrl: './lost-cities-hand.component.html',
-    styleUrls: ['./lost-cities-hand.component.css']
+    styleUrls: ['./lost-cities-hand.component.scss']
 })
 export class LostCitiesHandComponent implements OnInit {
 

@@ -1,0 +1,28 @@
+@import '../lost-cities-card/lost-cities-card.common';
+
+$pile-margin: 5px;
+
+.discard-piles {
+    border: 1px solid blue;
+    width: ($card-width*5) + ($pile-margin*10) + 10; //+10 because of left/right card borders
+    height: $card-height + ($pile-margin*2) + 2 //+2 of top/botom card borders;
+}
+
+.discard-pile {
+    position: relative;
+    border: 1px solid #333;
+    width: $card-width;
+    height: $card-height;
+    display: inline-block;
+    margin: $pile-margin;
+}
+
+.empty-pile,
+.top-card {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}

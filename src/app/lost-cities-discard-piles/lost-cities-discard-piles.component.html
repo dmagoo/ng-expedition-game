@@ -1,6 +1,6 @@
 <div class="discard-piles">
-  <div *ngFor="let discardPile of discardPiles" (click)="handleClick($event, discardPile);" class="discard-pile discard-pile-{{discardPile.color | cardcolor}}">
-    <div *ngIf="discardPile.length>0; else elseBlock" class="top-card">{{discardPile.peekTopCard()}} - {{discardPile.color | cardcolor}}</div>
+  <div *ngFor="let discardPile of discardPiles" (click)="handleClick($event, discardPile);" class="discard-pile">
+    <lost-cities-card *ngIf="discardPile.length>0; else elseBlock" class="top-card" [card]="discardPile.peekTopCard()"></lost-cities-card>
     <ng-template #elseBlock>
       <div class="empty-pile">
         [empty]

@@ -11,7 +11,7 @@ import { LostCitiesGameService } from '../services/lost-cities-game.service';
 @Component({
     selector: 'lost-cities-discard-piles',
     templateUrl: './lost-cities-discard-piles.component.html',
-    styleUrls: ['./lost-cities-discard-piles.component.css']
+    styleUrls: ['./lost-cities-discard-piles.component.scss']
 })
 export class LostCitiesDiscardPilesComponent implements OnInit {
     @Input() discardPiles: Array<DiscardPile>;

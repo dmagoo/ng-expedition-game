@@ -5,10 +5,12 @@ import { LostCitiesAppComponent } from './lost-cities-app/lost-cities-app.compon
 
 import { LostCitiesGameService } from './services/lost-cities-game.service';
 import { LostCitiesBoardComponent } from './lost-cities-board/lost-cities-board.component';
+import { LostCitiesCardComponent } from './lost-cities-card/lost-cities-card.component';
 import { LostCitiesHandComponent } from './lost-cities-hand/lost-cities-hand.component';
 import { LostCitiesDiscardPilesComponent } from './lost-cities-discard-piles/lost-cities-discard-piles.component';
 
 import { CardColorPipe } from './pipes/cardcolor.pipe';
+
 
 @NgModule({
     declarations: [
@@ -16,7 +18,8 @@ import { CardColorPipe } from './pipes/cardcolor.pipe';
         LostCitiesBoardComponent,
         LostCitiesHandComponent,
         LostCitiesDiscardPilesComponent,
-        CardColorPipe
+        CardColorPipe,
+        LostCitiesCardComponent
     ],
     imports: [
         BrowserModule
