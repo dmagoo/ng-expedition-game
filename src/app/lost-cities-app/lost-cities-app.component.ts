@@ -19,9 +19,9 @@ export class LostCitiesAppComponent {
         private gameService: LostCitiesGameService
     ) {
 
-        gameService.registerPlayer(0, 'bob', new HumanPlayerAgent());
+        gameService.registerPlayer(0, 'Bob', new HumanPlayerAgent());
         //gameService.registerPlayer(1, 'robo betty', new AIPlayerAgent(greedyStrategy, scoreTallyHeuristic));
-        gameService.registerPlayer(1, 'sarah', new HumanPlayerAgent());
+        gameService.registerPlayer(1, 'Sarah', new HumanPlayerAgent());
 
         console.log('starting game');
         gameService.startGame();

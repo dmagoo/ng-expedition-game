@@ -7,4 +7,12 @@
 
 .hand-card:hover {
     z-index: 1;                 
+    top:-20px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,.5);
+}
+
+.header {
+    font-weight: bold;
+    font-size: 40px;
+    font-family: helvetica;
 }

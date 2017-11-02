@@ -8,11 +8,15 @@
     margin: 0 10px;
     vertical-align: top;
     cursor: pointer;
+    margin-top: 6px;
+    background-color: #999999;
+    color: white;
 }
 
 .discard-piles {
     display: inline-block;
     vertical-align: top;
+    margin-left: 34px;
 }
 
 .score-box {
@@ -24,7 +28,7 @@
     width: $card-width;
     height: $card-height;
     display: inline-table;
-    margin: 0 10px;
+    margin-left: 10px;
     vertical-align: top;
 }
 
@@ -43,8 +47,29 @@
     display: inline-block;
 }
 
+.score-box,
+.played-cards-piles {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .player-header {
     font-weight: bold;
     font-size: 40px;
     font-family: helvetica;
+    display: inline-block;
+    position: relative;
+    height: $card-height;
+    width: 30px;
+    margin-bottom: -($card-height);
+}
+
+.player-header div {
+    transform: rotate(-90deg) translate(50%, 0%);
+    transform-origin: right, top;
+    -ms-transform: rotate(-90deg) translate(50%, 0%);
+    -ms-transform-origin:right, top;
+    -webkit-transform: rotate(-90deg) translate(50%, 0%);
+    -webkit-transform-origin:right, top;
+    text-align: center;
 }
