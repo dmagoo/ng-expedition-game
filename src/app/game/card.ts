@@ -1,3 +1,12 @@
+export var OVERHEAD_COST = 20;
+
+//add a bonus if the pile contains more than
+//this many cards
+export var BONUS_COUNT = 8;
+
+//the value of the bonus to add
+export var BONUS_VALUE = 20;
+
 export const enum Color {
     YELLOW = 0,
     BLUE,
@@ -66,6 +75,31 @@ export var valueNames: Array<string> = [
     "nine",
     "ten"
 ];
+
+export function getColorScore(cards: Array<Card>): number {
+    let num_investments = 0;
+    let base_score = -OVERHEAD_COST;
+    let score = 0;
+
+    for(let i = 0; i < cards.length; i++) {
+        let card = cards[i];
+
+        if(Value.INVESTMENT === card.value) {
+            num_investments++;
+        }
+        else {
+            base_score += card.value;
+        }
+    }
+
+    score = base_score * (num_investments + 1);
+    if(cards.length >= BONUS_COUNT) {
+        score += BONUS_VALUE;
+    }
+
+    return score;
+}
+
 
 export class Card {
     constructor(

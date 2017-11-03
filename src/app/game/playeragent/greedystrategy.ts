@@ -13,6 +13,7 @@ import {
 
 
 let greedyStrategy: Strategy;
+
 greedyStrategy = function(boardState: BoardState, heuristic: Heuristic): Turn {
     let bestPlayAction: Action = null;
     let bestDrawAction: Action = null;
@@ -30,12 +31,19 @@ greedyStrategy = function(boardState: BoardState, heuristic: Heuristic): Turn {
 
     let boardStateCopy;
     let bestScore = -1000;
+
+    //find best play action
     for(let action of possibleActions) {
         boardStateCopy = boardState.copy();
 
         action.applyTo(boardStateCopy);
-        if(null === bestPlayAction) {
+
+        let heuristicScore = heuristic(boardStateCopy);
+
+        if(null === bestPlayAction || heuristicScore > bestScore) {
             bestPlayAction = action;
+            bestScore = heuristicScore;
+            console.log('new best score!' + bestScore);
         }
     }
 
@@ -52,6 +60,17 @@ greedyStrategy = function(boardState: BoardState, heuristic: Heuristic): Turn {
         action.applyTo(boardStateSecondCopy);
         if(null === bestDrawAction) {
             bestDrawAction = action;
+        }
+
+        //heuristic is relative to board-states current player
+        //since this board-state has the opponent as the current player
+        //negate the score
+        let heuristicScore = -heuristic(boardStateCopy);
+        
+        if(null === bestDrawAction || heuristicScore > bestScore) {
+            bestDrawAction = action;
+            bestScore = heuristicScore;
+            console.log('new best score!' + bestScore);
         }
     }
 

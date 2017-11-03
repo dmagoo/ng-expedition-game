@@ -24,6 +24,10 @@ export class BoardState {
         return this.playerList[this.currentPlayerIndex];
     }
 
+    public getCurrentOpponent(): Player {
+        return this.playerList[1 - this.currentPlayerIndex];
+    }
+
     public nextPhase() {
         if(TurnPhase.DRAW_CARD === this.turnPhase) {
             this.nextPlayer();

@@ -48,6 +48,14 @@ export class LostCitiesGameService {
         players.push(new Player(1, this.playerInfo[1].name));
         this.game = new Game(players);
         this.updateVisiblePlayer();
+        try {
+            this.handleTurnEnd();
+        }
+        catch(e) {
+            //if there are two bots, a game over exception will
+            //fire before game renders
+            //catch it here to see output
+        }
     }
 
     public playCard(card: Card) {

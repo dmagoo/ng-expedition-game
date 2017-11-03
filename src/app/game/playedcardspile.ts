@@ -1,17 +1,10 @@
 import {
     Color,
     Card,
-    Value
+    Value,
+    BONUS_COUNT,
+    getColorScore
 } from './card';
-
-export var OVERHEAD_COST = 20;
-
-//add a bonus if the pile contains more than
-//this many cards
-export var BONUS_COUNT = 8;
-
-//the value of the bonus to add
-export var BONUS_VALUE = 20;
 
 export class  PlayedCardsPile {
     public cards: Array<Card>;
@@ -46,24 +39,7 @@ export class  PlayedCardsPile {
         return this.length >= BONUS_COUNT;
     }
     private updateScore(): void {
-        this.score = 0;
-        let num_investments = 0;
-        let base_score = -OVERHEAD_COST;
-        for(let i = 0; i < this.length; i++) {
-            let card = this.cards[i];
-
-            if(Value.INVESTMENT === card.value) {
-                num_investments++;
-            }
-            else {
-                base_score += card.value;
-            }
-        }
-
-        this.score = base_score * (num_investments + 1);
-        if(this.hasBonus()) {
-            this.score += BONUS_VALUE;
-        }
+        this.score = getColorScore(this.cards)
     }
 
 }
