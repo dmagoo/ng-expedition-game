@@ -15,7 +15,7 @@ import { Action } from './action';
 
 export class Game {
     private boardState: BoardState;
-    
+
     constructor(players: Array<Player>) {
         let deck = new Deck();
         this.initPlayers(deck, players);
@@ -47,7 +47,11 @@ export class Game {
     public getCurrentPlayer(): Player {
         return this.boardState.getCurrentPlayer();
     }
-    
+
+    public gameOver(): boolean {
+        return this.boardState.gameOver();
+    }
+
     private initPlayers(deck: Deck, players: Array<Player>): void {
         //let players: Array<Player> = [];
         //players.push(new Player('Player A'));
@@ -69,5 +73,4 @@ export class Game {
         }
         return discardPiles;
     }
-
 }

@@ -87,6 +87,7 @@ export class LostCitiesGameService {
         }
         //todo, make this decorator
         this.updateVisiblePlayer();
+        this.handleTurnEnd();
     }
 
     public drawFromDeck() {
@@ -99,8 +100,27 @@ export class LostCitiesGameService {
         }
         //todo, make this decorator
         this.updateVisiblePlayer();
+        this.handleTurnEnd();
     }
 
+    private handleTurnEnd() {
+        //try AI Move
+        let currentPlayer = this.game.getCurrentPlayer();
+        if(this.playerIsHuman(currentPlayer)) {
+            console.log('next player is human. Nothing to do');
+            return;
+        }
+
+        let playerAgent = this.playerInfo[currentPlayer.order].playerAgent;
+        console.log('starting ai turn...');
+        console.log(playerAgent);
+        let turn = playerAgent.findTurn(this.game.getBoardState());
+        turn.applyTo(this.game.getBoardState());
+        //needless rucursion if both players are AI?
+        this.handleTurnEnd();
+        this.updateVisiblePlayer();
+    }
+    
     public getVisiblePlayer(): Player {
         return this.visiblePlayer;
     }
@@ -118,10 +138,17 @@ export class LostCitiesGameService {
             this.visiblePlayer = currentPlayer;
         }
         else {
+            let oppositePlayer = this.getOppositePlayer(currentPlayer);
+            
             //if other player is non-human, then both players are non-human,
-            //so show current player
-            //if other player IS human, show them
-            //
+            if(!this.playerIsHuman(oppositePlayer)) {
+                //so show current player
+                this.visiblePlayer = currentPlayer;
+            }
+            else {
+                //if other player IS human, but this one is not, show the human
+                this.visiblePlayer = oppositePlayer;
+            }
         }
 
     }

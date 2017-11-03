@@ -44,5 +44,8 @@ export class BoardState {
     public copy(): BoardState {
         return <BoardState>_.cloneDeep(this);
     }
-    
+
+    public gameOver(): boolean {
+        return 0 === this.deck.length;
+    }
 }

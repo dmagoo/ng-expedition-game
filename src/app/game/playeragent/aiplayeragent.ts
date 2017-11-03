@@ -1,7 +1,6 @@
 import { PlayerAgent } from './playeragent';
 import { BoardState } from '../boardstate';
 import { Turn } from '../turn';
-
 import {
     Strategy,
     Heuristic
@@ -14,7 +13,7 @@ export class AIPlayerAgent extends PlayerAgent {
     }
 
     findTurn(boardState: BoardState): Turn {
-        return null;
+        return this.strategy(boardState, this.heuristic);
     }
 
 }

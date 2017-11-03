@@ -8,6 +8,45 @@ import {
 } from './card';
 import { Player } from './player';
 
+//given a board state, list all possible actions for the current
+//player
+export function listActions(boardState: BoardState): Array<Action> {
+    let ret = [];
+
+    if(boardState.gameOver()) {
+        throw new Error('game is over');
+    }
+
+    if(boardState.turnPhase === TurnPhase.PLAY_CARD) {
+        console.log('enumerating play moves');
+        let player = boardState.getCurrentPlayer();
+        let playerHand = player.hand;
+
+        for(let cardIndex in playerHand) {
+            let card = playerHand[cardIndex];
+            ret.push(new DiscardCardAction(card));
+            if(player.playedCards[card.color].canAddCard(card)) {
+                ret.push(new PlayCardAction(card));
+            }
+        }
+    }
+    else if(boardState.turnPhase === TurnPhase.DRAW_CARD) {
+        console.log('enumerating draw moves');
+
+        ret.push(new DrawBlindAction());
+
+        for(let discardPileIndex in boardState.discardPiles) {
+            let discardPile = boardState.discardPiles[discardPileIndex];
+            if(0 < discardPile.length) {
+                ret.push(new DrawDiscardedAction(discardPile.color));
+            }
+        }
+    }
+
+    console.log(ret.length + ' actions found')
+    return ret;
+}
+
 //decorator to check that the board state is in the correct phase,
 //will also advance phase after the action
 function Phase(turnPhase: TurnPhase) {
