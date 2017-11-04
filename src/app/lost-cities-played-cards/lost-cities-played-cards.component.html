@@ -3,7 +3,11 @@
                'flipped' === orientation ?
                playedCardsPiles.reverse() : 
                playedCardsPiles
-        )" class="played-cards-pile">
+               )"
+       dnd-droppable
+       (onDropSuccess)="droppedCard($event, playedCardsPile)"
+       [allowDrop]="allowCardDrop(playedCardsPile)" 
+       class="played-cards-pile">
 
     <ng-container *ngIf="playedCardsPile.length > 0">
       <lost-cities-card *ngFor="let card of playedCardsPile.cards" [card]="card" class="played-card"></lost-cities-card>

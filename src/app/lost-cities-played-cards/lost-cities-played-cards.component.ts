@@ -17,4 +17,14 @@ export class LostCitiesPlayedCardsComponent {
     @Input() orientation: string;
     constructor(private gameService: LostCitiesGameService) {
     }
+
+    droppedCard(event, playedCardsPile: PlayedCardsPile) {
+        this.gameService.playCard(event.dragData);
+    }
+
+    allowCardDrop(playedCardsPile: PlayedCardsPile) {
+        return (dragData: Card) => {
+            return dragData.color === playedCardsPile.color;
+        }
+    }
 }

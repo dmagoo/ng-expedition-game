@@ -1,3 +1,7 @@
+import {
+    DndModule
+} from 'ng2-dnd';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -24,7 +28,9 @@ import { LostCitiesPlayedCardsComponent } from './lost-cities-played-cards/lost-
         LostCitiesPlayedCardsComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        DndModule.forRoot()
+
     ],
     providers: [LostCitiesGameService],
     bootstrap: [LostCitiesAppComponent]

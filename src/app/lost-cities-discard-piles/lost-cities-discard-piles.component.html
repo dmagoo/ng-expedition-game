@@ -1,5 +1,12 @@
 <div class="discard-piles">
-  <div *ngFor="let discardPile of discardPiles" (click)="handleClick($event, discardPile);" class="discard-pile discard-pile-{{discardPile.color | cardcolor}}">
+  <div
+     *ngFor="let discardPile of discardPiles"
+     dnd-droppable
+     (click)="handleClick($event, discardPile);"
+     (onDropSuccess)="droppedCard($event, discardPile)"
+     [allowDrop]="allowCardDrop(discardPile)"
+     class="discard-pile discard-pile-{{discardPile.color | cardcolor}}"
+     >
     <lost-cities-card *ngIf="discardPile.length>0; else elseBlock" class="top-card" [card]="discardPile.peekTopCard()"></lost-cities-card>
     <ng-template #elseBlock>
       <div class="empty-pile">

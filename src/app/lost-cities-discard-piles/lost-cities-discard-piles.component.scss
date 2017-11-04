@@ -3,7 +3,8 @@
 $pile-margin: 5px;
 
 .discard-piles {
-    border: 1px solid blue;
+    background-color: #ccaa66;
+    border-radius: 5px;
     width: ($card-width*5) + ($pile-margin*10) + 10; //+10 because of left/right card borders
     height: $card-height + ($pile-margin*2) + 2 //+2 of top/botom card borders;
 }
@@ -31,6 +32,10 @@ $pile-margin: 5px;
         rgba(0, 0, 0, 0.2)
                     );
     cursor: pointer;
+}
+
+.discard-pile.dnd-drag-over {
+    box-shadow: 0px 0px 12px 12px rgba( 238, 255, 255, .7)
 }
 
 .empty-pile {

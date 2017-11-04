@@ -5,6 +5,9 @@
        *ngFor="let card of player.hand"
        (click)="handleClick($event, card);"
        [card]="card"
+       dnd-draggable
+       [dragEnabled]="true"
+       [dragData]="card"
        >
       </lost-cities-card>
 </div>

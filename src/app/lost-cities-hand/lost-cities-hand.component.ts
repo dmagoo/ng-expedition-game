@@ -25,11 +25,11 @@ export class LostCitiesHandComponent implements OnInit {
     handleClick(event: MouseEvent, card: Card) {
 
         if(event.shiftKey) {
-            console.log('handling click, attempting to play a hand card: ' + card.color);
-            this.gameService.discardCard(card);
+//            console.log('handling click, attempting to play a hand card: ' + card.color);
+//            this.gameService.discardCard(card);
         } else {
-            console.log('handling click, attempting to play a hand card: ' + card.color);
-            this.gameService.playCard(card);
+//            console.log('handling click, attempting to play a hand card: ' + card.color);
+//            this.gameService.playCard(card);
         }
 
     }
