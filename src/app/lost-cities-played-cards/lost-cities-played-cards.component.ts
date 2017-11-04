@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 
 import { Card } from '../game/card';
+import { TurnPhase } from '../game/boardstate';
 import { PlayedCardsPile } from '../game/playedcardspile';
 import { LostCitiesGameService } from '../services/lost-cities-game.service';
 
@@ -27,7 +28,9 @@ export class LostCitiesPlayedCardsComponent {
             if('flipped' === this.orientation) {
                 return false;
             }
-            return dragData.color === playedCardsPile.color;
+
+            return (TurnPhase.PLAY_CARD === this.gameService.getGame().getBoardState().turnPhase) &&
+                (dragData.color === playedCardsPile.color);
         }
     }
 }
