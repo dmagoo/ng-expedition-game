@@ -7,7 +7,7 @@
        dnd-droppable
        (onDropSuccess)="droppedCard($event, playedCardsPile)"
        [allowDrop]="allowCardDrop(playedCardsPile)" 
-       class="played-cards-pile">
+       class="played-cards-pile played-cards-pile-{{ playedCardsPile.color | cardcolor }}">
 
     <ng-container *ngIf="playedCardsPile.length > 0">
       <lost-cities-card *ngFor="let card of playedCardsPile.cards" [card]="card" class="played-card"></lost-cities-card>

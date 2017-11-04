@@ -24,6 +24,9 @@ export class LostCitiesPlayedCardsComponent {
 
     allowCardDrop(playedCardsPile: PlayedCardsPile) {
         return (dragData: Card) => {
+            if('flipped' === this.orientation) {
+                return false;
+            }
             return dragData.color === playedCardsPile.color;
         }
     }
