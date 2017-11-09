@@ -59,6 +59,7 @@ export class Player {
         for(let i = 0; i < this.playedCards.length; i++) {
             score += this.playedCards[i].score;            
         }
+
         return score;
     }
 

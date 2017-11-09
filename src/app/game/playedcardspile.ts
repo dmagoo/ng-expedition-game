@@ -10,7 +10,8 @@ export class  PlayedCardsPile {
     public cards: Array<Card>;
     public length: number = 0;
     public score: number = 0;
-
+    public investments: number = 0;
+    
     constructor(public color: Color) {
         this.cards = [];
     }
@@ -20,8 +21,12 @@ export class  PlayedCardsPile {
             throw new Error('cannot play card of incorrect color');
         }
         if(!this.canAddCard(card)) {
-            throw new Error('invalid card');
+            throw new Error('invalid card' + card);
         }
+        if(card.isInvestment()) {
+            this.investments++;
+        }
+
         this.cards.push(card);
         this.length++;
         this.updateScore();
@@ -38,6 +43,11 @@ export class  PlayedCardsPile {
     public hasBonus() {
         return this.length >= BONUS_COUNT;
     }
+
+    public investmentMultiplier(): number {
+        return this.investments + 1;
+    }
+
     private updateScore(): void {
         this.score = getColorScore(this.cards)
     }

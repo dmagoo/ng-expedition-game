@@ -1,7 +1,7 @@
 <div class="lc-board">
   <div class="player-header"><div>{{getVisibleOpponent().name}}</div></div>
   <lost-cities-played-cards [playedCardsPiles]="getVisibleOpponent().playedCards" [orientation]="'flipped'" class="played-cards-piles"></lost-cities-played-cards>
-  <div class="score-box"><div class="score">{{getVisibleOpponent().getScore()}}</div></div>
+  <div class="score-box" [ngClass]="{'winner': getVisibleOpponent()===getWinner()}"><div class="score">{{getVisibleOpponent().getScore()}}</div></div>
   <div></div>
   <lost-cities-discard-piles [discardPiles]="boardState.discardPiles" class="discard-piles"></lost-cities-discard-piles>
   <div class="draw-deck" (click)="handleDeckClick($event);">
@@ -11,6 +11,6 @@
   <div></div>
   <div class="player-header"><div>{{getVisiblePlayer().name}}</div></div>
   <lost-cities-played-cards [playedCardsPiles]="getVisiblePlayer().playedCards" [orientation]="'normal'" class="played-cards-piles"></lost-cities-played-cards>
-  <div class="score-box"><div class="score">{{getVisiblePlayer().getScore()}}</div></div>
+  <div class="score-box" [ngClass]="{'winner': getVisiblePlayer()===getWinner()}"><div class="score">{{getVisiblePlayer().getScore()}}</div></div>
   <lost-cities-hand [player]="getVisiblePlayer()"></lost-cities-hand>
 </div>

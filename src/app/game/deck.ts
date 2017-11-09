@@ -23,8 +23,6 @@ export class Deck {
                 this.cards.push(new Card(colorIndex, valueIndex));
             }
         }
-        console.log('card thing');
-        console.log(this.cards);            
         this.length = this.cards.length;
         return this;
     }

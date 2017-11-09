@@ -39,8 +39,11 @@ export class Game {
 
     //apply a turn directly to the board state
     public applyAction(action: Action) {
-        console.log('applying an action');
-        action.applyTo(this.boardState);
+        try {
+            action.applyTo(this.boardState);
+        }
+        catch(e) {
+        }
     }
 
     //passthrough to board state for convenience
@@ -52,6 +55,15 @@ export class Game {
         return this.boardState.gameOver();
     }
 
+    public winner(): Player {
+        if(this.gameOver()) {
+            return this.boardState.getLeadingPlayer();
+        }
+
+        return null;
+    }
+
+    
     private initPlayers(deck: Deck, players: Array<Player>): void {
         //let players: Array<Player> = [];
         //players.push(new Player('Player A'));

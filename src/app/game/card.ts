@@ -84,19 +84,17 @@ export function getColorScore(cards: Array<Card>): number {
     for(let i = 0; i < cards.length; i++) {
         let card = cards[i];
 
-        if(Value.INVESTMENT === card.value) {
+        if(card.isInvestment()) {
             num_investments++;
         }
         else {
             base_score += card.value;
         }
     }
-
     score = base_score * (num_investments + 1);
     if(cards.length >= BONUS_COUNT) {
         score += BONUS_VALUE;
     }
-
     return score;
 }
 
@@ -116,5 +114,9 @@ export class Card {
 
     public equals(card: Card) {
         return (this.color === card.color) && (this.value === card.value);
+    }
+
+    public isInvestment(): boolean {
+        return this.value === Value.INVESTMENT;
     }
 }

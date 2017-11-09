@@ -14,6 +14,8 @@ import { LostCitiesHandComponent } from './lost-cities-hand/lost-cities-hand.com
 import { LostCitiesDiscardPilesComponent } from './lost-cities-discard-piles/lost-cities-discard-piles.component';
 
 import { CardColorPipe } from './pipes/cardcolor.pipe';
+import { SortCardsPipe } from './pipes/sortcards.pipe';
+
 import { LostCitiesPlayedCardsComponent } from './lost-cities-played-cards/lost-cities-played-cards.component';
 
 
@@ -24,6 +26,7 @@ import { LostCitiesPlayedCardsComponent } from './lost-cities-played-cards/lost-
         LostCitiesHandComponent,
         LostCitiesDiscardPilesComponent,
         CardColorPipe,
+        SortCardsPipe,
         LostCitiesCardComponent,
         LostCitiesPlayedCardsComponent
     ],

@@ -20,7 +20,6 @@ export class LostCitiesBoardComponent {
     }
     
     handleDeckClick(event: MouseEvent) {
-        console.log('handling click, attempting to draw from deck');
         this.gameService.drawFromDeck();
     }
 
@@ -30,5 +29,9 @@ export class LostCitiesBoardComponent {
 
     getVisibleOpponent(): Player {
         return this.gameService.getVisibleOpponent();
+    }
+
+    getWinner(): Player {
+        return this.gameService.getGame().winner();
     }
 }

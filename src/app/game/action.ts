@@ -18,7 +18,6 @@ export function listActions(boardState: BoardState): Array<Action> {
     }
 
     if(boardState.turnPhase === TurnPhase.PLAY_CARD) {
-        console.log('enumerating play moves');
         let player = boardState.getCurrentPlayer();
         let playerHand = player.hand;
 
@@ -31,8 +30,6 @@ export function listActions(boardState: BoardState): Array<Action> {
         }
     }
     else if(boardState.turnPhase === TurnPhase.DRAW_CARD) {
-        console.log('enumerating draw moves');
-
         ret.push(new DrawBlindAction());
 
         for(let discardPileIndex in boardState.discardPiles) {
@@ -43,7 +40,6 @@ export function listActions(boardState: BoardState): Array<Action> {
         }
     }
 
-    console.log(ret.length + ' actions found')
     return ret;
 }
 
@@ -98,20 +94,20 @@ export interface UseCardAction extends Action {
 export class DrawBlindAction implements DrawCardAction {
     @Phase(TurnPhase.DRAW_CARD)
     public applyTo(boardState: BoardState): void {
-        console.log('drawing from deck');
-        console.log(boardState);
+        //console.log('drawing from deck');
+        //console.log(boardState);
         boardState.getCurrentPlayer().addCardToHand(boardState.deck.draw());
     }
 }
 
 //draw from discard pile
 export class DrawDiscardedAction implements DrawCardAction {
-    constructor(private color: Color) {
+    constructor(public color: Color) {
     }
 
     @Phase(TurnPhase.DRAW_CARD)
     public applyTo(boardState: BoardState): void {
-        console.log('drawing from discard pile');
+        //console.log('drawing from discard pile');
         boardState.getCurrentPlayer()
             .addCardToHand(
                 boardState.discardPiles[this.color].draw()
@@ -122,7 +118,7 @@ export class DrawDiscardedAction implements DrawCardAction {
 //discard to a discard pile
 export class DiscardCardAction implements UseCardAction {
 
-    constructor(private card: Card) {
+    constructor(public card: Card) {
     }
 
     @Phase(TurnPhase.PLAY_CARD)
@@ -133,7 +129,7 @@ export class DiscardCardAction implements UseCardAction {
 }
 
 export class PlayCardAction implements UseCardAction {
-    constructor(private card: Card) {
+    constructor(public card: Card) {
     }
 
     @Phase(TurnPhase.PLAY_CARD)

@@ -2,7 +2,7 @@
   <div class="header">{{ player.name }}'s Hand</div>
     <lost-cities-card
        class="hand-card"
-       *ngFor="let card of player.hand"
+       *ngFor="let card of player.hand | sortcards"
        (click)="handleClick($event, card);"
        [card]="card"
        dnd-draggable

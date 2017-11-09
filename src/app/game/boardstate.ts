@@ -52,4 +52,19 @@ export class BoardState {
     public gameOver(): boolean {
         return 0 === this.deck.length;
     }
+
+    public getLeadingPlayer(): Player
+    {
+        let delta = this.playerList[0].getScore() - this.playerList[1].getScore();
+
+        if(delta > 0) {
+            return this.playerList[0];
+        }
+        else if (delta < 0) {
+            return this.playerList[1];
+        }
+
+        return null;
+    }
+
 }

@@ -43,6 +43,10 @@
     color: white;
 }
 
+.score-box.winner .score::after {
+    content: "\265B";
+}
+
 .played-cards-piles {
     display: inline-block;
 }
